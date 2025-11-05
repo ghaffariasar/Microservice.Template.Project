@@ -1,0 +1,369 @@
+@model WebUI.Models.ProductViewModel
+@{
+    ViewData["Title"] = "جزئیات محصول";
+}
+
+<style>
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #e2e8f0;
+    }
+    .page-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #2d3748;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .header-buttons {
+        display: flex;
+        gap: 0.5rem;
+    }
+    .btn-header {
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        border: none;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.2s;
+    }
+    .btn-edit-header {
+        background: #667eea;
+        color: white;
+    }
+    .btn-edit-header:hover {
+        background: #5568d3;
+        color: white;
+    }
+    .btn-delete-header {
+        background: #ef4444;
+        color: white;
+    }
+    .btn-delete-header:hover {
+        background: #dc2626;
+        color: white;
+    }
+    .btn-back-header {
+        background: #f7fafc;
+        color: #4a5568;
+        border: 1px solid #e2e8f0;
+    }
+    .btn-back-header:hover {
+        background: #edf2f7;
+        color: #2d3748;
+    }
+    .product-info-card {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .product-name {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1a202c;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .product-description {
+        color: #718096;
+        font-size: 0.875rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: #f7fafc;
+        border-radius: 6px;
+    }
+    .info-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .info-table tr {
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .info-table tr:last-child {
+        border-bottom: none;
+    }
+    .info-table td {
+        padding: 0.875rem 0;
+        font-size: 0.875rem;
+    }
+    .info-table td:first-child {
+        color: #718096;
+        font-weight: 500;
+        width: 40%;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .info-table td:last-child {
+        color: #2d3748;
+        font-weight: 600;
+    }
+    .price-value {
+        color: #10b981;
+        font-size: 1.1rem;
+    }
+    .stock-section {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .section-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #e2e8f0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .stock-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    .stock-item {
+        padding: 1rem;
+        background: #f7fafc;
+        border-radius: 6px;
+        border: 1px solid #e2e8f0;
+    }
+    .stock-item-label {
+        font-size: 0.75rem;
+        color: #718096;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+    .stock-item-value {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #2d3748;
+    }
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-top: 0.5rem;
+    }
+    .status-in-stock {
+        background: #d1fae5;
+        color: #065f46;
+    }
+    .status-low-stock {
+        background: #fef3c7;
+        color: #92400e;
+    }
+    .status-out-of-stock {
+        background: #fee2e2;
+        color: #991b1b;
+    }
+    .meta-section {
+        background: #f7fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1rem;
+        font-size: 0.8rem;
+        color: #718096;
+    }
+    .meta-section-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-left: 1.5rem;
+    }
+    .meta-section-item:first-child {
+        margin-left: 0;
+    }
+</style>
+
+@if (Model != null)
+{
+    <div class="page-header">
+        <h1 class="page-title">
+            <i class="bi bi-box-seam"></i>
+            @Model.Name
+        </h1>
+        <div class="header-buttons">
+            <a href="/Products/Edit/@Model.Id" class="btn-header btn-edit-header">
+                <i class="bi bi-pencil-square"></i>
+                ویرایش
+            </a>
+            <form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="d-inline">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn-header btn-delete-header" onclick="return confirm('آیا از حذف این محصول اطمینان دارید؟ این عملیات غیرقابل بازگشت است.');">
+                    <i class="bi bi-trash"></i>
+                    حذف
+                </button>
+            </form>
+            <a href="/Products" class="btn-header btn-back-header">
+                <i class="bi bi-arrow-right"></i>
+                بازگشت
+            </a>
+        </div>
+    </div>
+
+    <div class="product-info-card">
+        <div class="product-name">@Model.Name</div>
+        @if (!string.IsNullOrEmpty(Model.Description))
+        {
+            <div class="product-description">@Model.Description</div>
+        }
+        else
+        {
+            <div class="product-description" style="color: #a0aec0; font-style: italic;">بدون توضیحات</div>
+        }
+        
+        <table class="info-table">
+            <tr>
+                <td>
+                    <i class="bi bi-currency-dollar"></i>
+                    قیمت واحد
+                </td>
+                <td>
+                    <span class="price-value">@Model.Price.ToString("N0") تومان</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <i class="bi bi-check-circle-fill"></i>
+                    موجودی قابل فروش
+                </td>
+                <td>@Model.AvailableQuantity</td>
+            </tr>
+            <tr>
+                <td>
+                    <i class="bi bi-boxes"></i>
+                    موجودی کل
+                </td>
+                <td>@Model.StockQuantity</td>
+            </tr>
+            <tr>
+                <td>
+                    <i class="bi bi-clock-history"></i>
+                    رزرو شده
+                </td>
+                <td>@Model.ReservedQuantity</td>
+            </tr>
+            <tr>
+                <td>
+                    <i class="bi bi-cash-coin"></i>
+                    ارزش موجودی
+                </td>
+                <td>
+                    <span class="price-value">@((Model.Price * Model.AvailableQuantity).ToString("N0")) تومان</span>
+                </td>
+            </tr>
+        </table>
+
+        <div class="mt-3">
+            @if (Model.AvailableQuantity > 10)
+            {
+                <span class="status-badge status-in-stock">
+                    <i class="bi bi-check-circle-fill"></i>
+                    موجود در انبار
+                </span>
+            }
+            else if (Model.AvailableQuantity > 0)
+            {
+                <span class="status-badge status-low-stock">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    موجودی کم
+                </span>
+            }
+            else
+            {
+                <span class="status-badge status-out-of-stock">
+                    <i class="bi bi-x-circle-fill"></i>
+                    ناموجود
+                </span>
+            }
+        </div>
+    </div>
+
+    <div class="stock-section">
+        <h3 class="section-title">
+            <i class="bi bi-bar-chart"></i>
+            خلاصه موجودی
+        </h3>
+        <div class="stock-items">
+            <div class="stock-item">
+                <div class="stock-item-label">
+                    <i class="bi bi-check-circle-fill"></i>
+                    قابل فروش
+                </div>
+                <div class="stock-item-value">@Model.AvailableQuantity</div>
+            </div>
+            <div class="stock-item">
+                <div class="stock-item-label">
+                    <i class="bi bi-clock-history"></i>
+                    رزرو شده
+                </div>
+                <div class="stock-item-value">@Model.ReservedQuantity</div>
+            </div>
+            <div class="stock-item">
+                <div class="stock-item-label">
+                    <i class="bi bi-boxes"></i>
+                    موجودی کل
+                </div>
+                <div class="stock-item-value">@Model.StockQuantity</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="meta-section">
+        <span>
+            <i class="bi bi-calendar-check"></i>
+            ایجاد: @Model.CreatedAt.ToString("yyyy/MM/dd HH:mm")
+        </span>
+        @if (Model.UpdatedAt.HasValue)
+        {
+            <span class="meta-section-item">
+                <i class="bi bi-pencil"></i>
+                بروزرسانی: @Model.UpdatedAt.Value.ToString("yyyy/MM/dd HH:mm")
+            </span>
+        }
+        <span class="meta-section-item">
+            <i class="bi bi-hash"></i>
+            ID: @Model.Id.ToString().Substring(0, 8)...
+        </span>
+    </div>
+}
+else
+{
+    <div class="card" style="border-radius: 8px; border: 1px solid #e2e8f0;">
+        <div class="card-body text-center p-4">
+            <div style="font-size: 3rem; color: #fbbf24; margin-bottom: 1rem;">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+            </div>
+            <h4 class="mb-2" style="color: #2d3748; font-weight: 600; font-size: 1.1rem;">محصول یافت نشد</h4>
+            <p class="text-muted mb-3" style="font-size: 0.875rem;">محصول مورد نظر شما وجود ندارد یا حذف شده است</p>
+            <a href="/Products" class="btn btn-primary btn-sm" style="border-radius: 6px; padding: 0.5rem 1.5rem; font-size: 0.875rem;">
+                <i class="bi bi-arrow-right me-2"></i>
+                بازگشت به لیست محصولات
+            </a>
+        </div>
+    </div>
+}

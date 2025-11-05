@@ -1,0 +1,85 @@
+@model List<WebUI.Models.OrderViewModel>
+@{
+    ViewData["Title"] = "مدیریت سفارش‌ها";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>
+        <i class="bi bi-cart-check me-2"></i>
+        سفارش‌ها
+    </h2>
+    <a href="/Orders/Create" class="btn btn-primary">
+        <i class="bi bi-plus-circle me-2"></i>
+        سفارش جدید
+    </a>
+</div>
+
+@if (Model != null && Model.Any())
+{
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th><i class="bi bi-hash me-1"></i>شناسه</th>
+                            <th><i class="bi bi-person me-1"></i>مشتری</th>
+                            <th><i class="bi bi-calendar me-1"></i>تاریخ</th>
+                            <th><i class="bi bi-currency-dollar me-1"></i>مبلغ کل</th>
+                            <th><i class="bi bi-info-circle me-1"></i>وضعیت</th>
+                            <th><i class="bi bi-gear me-1"></i>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var order in Model)
+                        {
+                            <tr>
+                                <td>@order.Id.ToString().Substring(0, 8)</td>
+                                <td>@order.CustomerId.ToString().Substring(0, 8)</td>
+                                <td>@order.OrderDate</td>
+                                <td>@order.TotalAmount.ToString("N0") تومان</td>
+                                <td>
+                                    <span class="badge bg-info">@order.StatusText</span>
+                                </td>
+                                <td>
+                                    <a href="/Orders/Details/@order.Id" class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <form asp-action="Delete" asp-route-id="@order.Id" method="post" class="d-inline" onsubmit="return confirm('حذف سفارش تایید می‌شود؟');">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                    @if (order.Status == 0)
+                                    {
+                                        <form asp-action="ConfirmPayment" asp-route-id="@order.Id" method="post" class="d-inline">
+                                            <button type="submit" class="btn btn-sm btn-success">
+                                                <i class="bi bi-check2-circle me-1"></i>
+                                                نهایی‌سازی
+                                            </button>
+                                            @Html.AntiForgeryToken()
+                                        </form>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-body text-center p-5">
+            <i class="bi bi-inbox icon-large text-muted"></i>
+            <h4 class="mt-3">هیچ سفارشی یافت نشد</h4>
+            <p class="text-muted">برای ایجاد سفارش جدید روی دکمه بالا کلیک کنید</p>
+        </div>
+    </div>
+}
+
+
+

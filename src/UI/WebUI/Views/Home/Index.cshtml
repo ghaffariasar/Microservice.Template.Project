@@ -1,0 +1,82 @@
+@{
+    ViewData["Title"] = "صفحه اصلی";
+}
+
+<div class="row">
+    <div class="col-12 text-center mb-5">
+        <h1 class="display-4 mb-3">
+            <i class="bi bi-box-seam icon-large"></i>
+        </h1>
+        <h2 class="mb-4">خوش آمدید به سیستم مدیریت سفارش و انبار</h2>
+        <p class="lead text-muted">یک سیستم میکروسرویس حرفه‌ای با معماری Clean Architecture</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body text-center p-5">
+                <i class="bi bi-cart-check icon-large"></i>
+                <h3 class="card-title mb-3">مدیریت سفارش‌ها</h3>
+                <p class="card-text text-muted mb-4">
+                    ایجاد، مشاهده و مدیریت سفارش‌های مشتریان با قابلیت‌های پیشرفته
+                </p>
+                <a href="/Orders" class="btn btn-primary">
+                    <i class="bi bi-arrow-left me-2"></i>
+                    ورود به سفارش‌ها
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-body text-center p-5">
+                <i class="bi bi-boxes icon-large"></i>
+                <h3 class="card-title mb-3">مدیریت محصولات</h3>
+                <p class="card-text text-muted mb-4">
+                    مدیریت موجودی انبار و محصولات با کنترل دقیق موجودی و رزرو
+                </p>
+                <a href="/Products" class="btn btn-primary">
+                    <i class="bi bi-arrow-left me-2"></i>
+                    ورود به محصولات
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body p-4">
+                <h4 class="card-title mb-4">
+                    <i class="bi bi-info-circle me-2"></i>
+                    ویژگی‌های سیستم
+                </h4>
+                <div class="row">
+                    <div class="col-md-3 text-center mb-3">
+                        <i class="bi bi-diagram-3 fs-1 text-primary mb-2"></i>
+                        <h6>معماری میکروسرویس</h6>
+                        <small class="text-muted">ساختار مقیاس‌پذیر و منعطف</small>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <i class="bi bi-shield-check fs-1 text-success mb-2"></i>
+                        <h6>مدیریت Race Conditions</h6>
+                        <small class="text-muted">با Distributed Lock</small>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <i class="bi bi-lightning-charge fs-1 text-warning mb-2"></i>
+                        <h6>Resilience با Polly</h6>
+                        <small class="text-muted">مقاوم در برابر خطا</small>
+                    </div>
+                    <div class="col-md-3 text-center mb-3">
+                        <i class="bi bi-database fs-1 text-info mb-2"></i>
+                        <h6>CQRS Pattern</h6>
+                        <small class="text-muted">جداسازی خواندن و نوشتن</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

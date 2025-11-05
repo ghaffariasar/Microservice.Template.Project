@@ -1,0 +1,125 @@
+# ---- Core / DotNet & Visual Studio ----
+## Build outputs
+**/bin/
+**/obj/
+
+## VS
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.slnLaunch.user
+
+## Rider
+.idea/
+
+## Logs
+logs/
+*.log
+
+## Temp
+*.tmp
+*.temp
+~$*
+
+## NuGet
+packages/
+*.nupkg
+*.snupkg
+*.nuget.props
+*.nuget.targets
+
+## Coverage
+**/TestResults/
+**/coverage/
+**/coverage.cobertura.xml
+
+## Publish
+**/publish/
+**/app.publish/
+
+## Secrets / Local settings
+secrets.json
+appsettings.*.Local.json
+**/Properties/launchSettings.json
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Artifacts & cache
+.cache/
+dist/
+
+## Docker
+**/.docker/
+**/docker-compose.override.local.yml
+
+## Tooling
+.env
+.env.*
+
+## Visual Studio
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.dll
+*.pdb
+*.exe
+.vs/
+
+## Rider
+.idea/
+*.sln.iml
+
+## User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## NuGet Packages
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+*.nuget.props
+*.nuget.targets
+
+## MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+## Coverage
+coverage*.json
+coverage*.xml
+coverage*.info
+
+## OS
+.DS_Store
+Thumbs.db
+

@@ -1,0 +1,71 @@
+@model WebUI.Models.OrderViewModel
+@{
+    ViewData["Title"] = "جزئیات سفارش";
+}
+
+@if (Model != null)
+{
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">
+                <i class="bi bi-cart-check me-2"></i>
+                جزئیات سفارش
+            </h4>
+            <a href="/Orders" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-arrow-right me-1"></i>
+                بازگشت
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <p><strong>شناسه سفارش:</strong> @Model.Id</p>
+                    <p><strong>شناسه مشتری:</strong> @Model.CustomerId</p>
+                    <p><strong>تاریخ سفارش:</strong> @Model.OrderDate</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>وضعیت:</strong>
+                        <span class="badge bg-info">@Model.StatusText</span>
+                    </p>
+                    <p><strong>مبلغ کل:</strong> @(Model.TotalAmount.ToString("N0")) تومان</p>
+                </div>
+            </div>
+            
+            <h5 class="mb-3">آیتم‌های سفارش</h5>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>نام محصول</th>
+                            <th>تعداد</th>
+                            <th>قیمت واحد</th>
+                            <th>جمع</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Items != null && Model.Items.Any())
+                        {
+                            foreach (var item in Model.Items)
+                            {
+                                <tr>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.UnitPrice.ToString("N0") تومان</td>
+                                    <td>@((item.Quantity * item.UnitPrice).ToString("N0")) تومان</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        <i class="bi bi-exclamation-triangle me-2"></i>
+        سفارش یافت نشد
+    </div>
+}
+
