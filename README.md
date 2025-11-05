@@ -21,6 +21,7 @@
 ### ساختار پروژه
 </div>
 
+
 ```
 src/
   Gateway/ApiGateway              → API Gateway (YARP + Polly + Serilog)
@@ -32,6 +33,7 @@ UI/WebUI                          → وب‌اپ ساده MVC برای دمو (
 ```
 
 <div dir="rtl" align="right">
+  
 ### پیکربندی‌های کلیدی
 
 - هدرهای سفارشی در `Shared/Common/HeaderNames.cs`:
@@ -46,7 +48,9 @@ UI/WebUI                          → وب‌اپ ساده MVC برای دمو (
 
 1) پیش‌نیاز: Docker Desktop
 2) در ریشه پروژه:
+
 </div>
+
 
 ```bash
 docker compose up -d --build
@@ -57,10 +61,11 @@ docker compose up -d --build
 - Inventory Service (Swagger): http://localhost:<port>
 - WebUI: http://localhost:5100 (نمونه کلاینت)
 
+
 <div dir="rtl" align="right">
+  
 ### نکات مهم پیاده‌سازی
 
-</div>
 
 - <b>Polly</b>: در `ApiGateway` و `WebUI` روی `HttpClient` با Retry/CircuitBreaker ثبت شده است.
 - <b>YARP</b>: در `ApiGateway/Program.cs` با `AddReverseProxy().LoadFromConfig(...).AddTransforms(...)` و `app.MapReverseProxy()` فعال است.
@@ -72,7 +77,7 @@ docker compose up -d --build
 - <b>CQRS</b>: فرمان‌ها/کوئری‌ها با MediatR در لایه Application هر سرویس قرار دارند.
 - <b>Distributed Lock</b>: پیاده‌سازی Redis-based در `Shared/Services/DistributedLockService.cs`، در سناریوهای رزرو/تأیید موجودی استفاده می‌شود.
 
-<div dir="rtl" align="right">
+
 ### توسعه محلی
 
 - اجرای Solution از طریق Visual Studio/Rider و انتخاب استارت هم‌زمان پروژه‌ها (Gateway, Services, WebUI)
@@ -88,6 +93,7 @@ docker compose up -d --build
 <hr/>
 
 </div>
+
 
 ## Microservice Template (.NET 9)
 
