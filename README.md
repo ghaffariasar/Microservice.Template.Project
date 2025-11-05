@@ -1,8 +1,9 @@
 <div dir="rtl" align="right">
 
-<h2>پروژه میکروسرویس (.NET 9)</h2>
+<h2>پروژه میکروسرویس (دات نت 9)</h2>
 
 این مخزن یک الگوی کامل برای ساخت سیستم‌های میکروسرویس بر پایه .NET 9 است که با معماری تمیز (Clean Architecture) و الگوهای مدرن پیاده‌سازی شده است. مهم‌ترین تکنولوژی‌ها و ابزارهای استفاده‌شده:
+</div>
 
 - <b>Polly</b>: تاب‌آوری و سیاست‌های Retry/Circuit Breaker برای HttpClient
 - <b>YARP</b>: پیاده‌سازی API Gateway با Reverse Proxy و Transformها
@@ -15,8 +16,10 @@
 - <b>CQRS</b>: جداسازی فرمان‌ها و کوئری‌ها با MediatR
 - <b>Distributed Lock</b>: قفل توزیع‌شده مبتنی بر Redis برای سناریوهای رقابتی
 
+<div dir="rtl" align="right">
 
 ### ساختار پروژه
+</div>
 
 ```
 src/
@@ -28,7 +31,7 @@ src/
 UI/WebUI                          → وب‌اپ ساده MVC برای دمو (HttpClient + Polly)
 ```
 
-
+<div dir="rtl" align="right">
 ### پیکربندی‌های کلیدی
 
 - هدرهای سفارشی در `Shared/Common/HeaderNames.cs`:
@@ -43,6 +46,7 @@ UI/WebUI                          → وب‌اپ ساده MVC برای دمو (
 
 1) پیش‌نیاز: Docker Desktop
 2) در ریشه پروژه:
+</div>
 
 ```bash
 docker compose up -d --build
@@ -53,8 +57,10 @@ docker compose up -d --build
 - Inventory Service (Swagger): http://localhost:<port>
 - WebUI: http://localhost:5100 (نمونه کلاینت)
 
-
+<div dir="rtl" align="right">
 ### نکات مهم پیاده‌سازی
+
+</div>
 
 - <b>Polly</b>: در `ApiGateway` و `WebUI` روی `HttpClient` با Retry/CircuitBreaker ثبت شده است.
 - <b>YARP</b>: در `ApiGateway/Program.cs` با `AddReverseProxy().LoadFromConfig(...).AddTransforms(...)` و `app.MapReverseProxy()` فعال است.
@@ -66,7 +72,7 @@ docker compose up -d --build
 - <b>CQRS</b>: فرمان‌ها/کوئری‌ها با MediatR در لایه Application هر سرویس قرار دارند.
 - <b>Distributed Lock</b>: پیاده‌سازی Redis-based در `Shared/Services/DistributedLockService.cs`، در سناریوهای رزرو/تأیید موجودی استفاده می‌شود.
 
-
+<div dir="rtl" align="right">
 ### توسعه محلی
 
 - اجرای Solution از طریق Visual Studio/Rider و انتخاب استارت هم‌زمان پروژه‌ها (Gateway, Services, WebUI)
