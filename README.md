@@ -37,8 +37,8 @@ UI/WebUI                          → وب‌اپ ساده MVC برای دمو (
 ### پیکربندی‌های کلیدی
 
 - هدرهای سفارشی در `Shared/Common/HeaderNames.cs`:
-  - `X-Gateway-Api-Key` برای احراز هویت بین Gateway و سرویس‌ها
-  - `Idempotency-Key` برای سناریوهای عدم تکرار
+-  `X-Gateway-Api-Key` برای احراز هویت بین Gateway و سرویس‌ها
+- `Idempotency-Key` برای سناریوهای عدم تکرار
 - انتخاب Provider کش در `appsettings`: کلید `Cache:Provider` یکی از `Redis | Memory | SqlServer`
 - اتصال Redis در `ConnectionStrings:Redis`
 - گزینه‌های Gateway در `GatewayOptions` (کلید `Gateway:ApiKey` اجباری)
@@ -63,6 +63,7 @@ docker compose up -d --build
 
 
 <div dir="rtl" align="right">
+
   
 ### نکات مهم پیاده‌سازی
 
@@ -91,6 +92,7 @@ docker compose up -d --build
 - نمای کلی، معماری، سرویس‌ها، Gateway، Resilience با Polly، کش/Idempotency/Lock، لاگینگ، CQRS و معماری تمیز، توسعه و پیکربندی.
 
 <hr/>
+
 
 </div>
 
