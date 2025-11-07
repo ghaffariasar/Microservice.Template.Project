@@ -68,48 +68,48 @@ docker compose up -d --build
 ### نکات مهم پیاده‌سازی
 
 <div align="right" dir="rtl">
- <b>Polly</b>:
+- <b>Polly</b>:
 
 در `ApiGateway` و `WebUI` روی `HttpClient` با Retry/CircuitBreaker ثبت شده است.
 </div>
 
+<div align="right" dir="rtl">
 - <b>YARP</b>:
-<div align="right">
 در `ApiGateway/Program.cs` با `AddReverseProxy().LoadFromConfig(...).AddTransforms(...)` و `app.MapReverseProxy()` فعال است.
 </div>
 
+<div align="right" dir="rtl">
 - <b>AutoMapper</b>:
-<div align="right">
 پروفایل‌ها در `*.Application/Mappings/*MappingProfile.cs` ثبت شده‌اند.
 </div>
 
+<div align="right" dir="rtl">
 - <b>Result Pattern</b>:
-<div align="right">
 در `Shared/Common/Result.cs` تعریف و در Handlerها استفاده می‌شود.
 </div>
 
+<div align="right" dir="rtl">
 - <b>Cache & Lock</b>:
-<div align="right">
 اکستنشن `AddDistributedCacheAndLock` در `Shared/Extensions/CacheServiceExtensions.cs` با قابلیت سوییچ بین Redis/Memory/SQLServer.
 </div>
 
+<div align="right" dir="rtl">
 - <b>Idempotency</b>:
-<div align="right">
 سرویس `IIdempotencyService` با `IDistributedCache` پیاده‌سازی شده است؛ هدر `Idempotency-Key` پذیرفته می‌شود.
 </div>
 
+<div align="right" dir="rtl">
 - <b>Serilog</b>:
-<div align="right">
 در تمام `Program.cs`ها با `UseSerilog()` و `WriteTo.Console()` پیکربندی شده است.
 </div>
 
+<div align="right" dir="rtl">
 - <b>CQRS</b>
-<div align="right">
 فرمان‌ها/کوئری‌ها با MediatR در لایه Application هر سرویس قرار دارند.
 </div>
-
+<div align="right" dir="rtl">
 - <b>Distributed Lock</b>:
-<div align="right">
+
 پیاده‌سازی Redis-based در `Shared/Services/DistributedLockService.cs`، در سناریوهای رزرو/تأیید موجودی استفاده می‌شود.
 </div>
 
