@@ -68,7 +68,9 @@ docker compose up -d --build
 ### نکات مهم پیاده‌سازی
 
 - Polly:
--  در `ApiGateway` و `WebUI` روی `HttpClient` با Retry/CircuitBreaker ثبت شده است.
+<div align="right">
+  در `ApiGateway` و `WebUI` روی `HttpClient` با Retry/CircuitBreaker ثبت شده است.
+</div>
 - YARP:
 -  در `ApiGateway/Program.cs` با `AddReverseProxy().LoadFromConfig(...).AddTransforms(...)` و `app.MapReverseProxy()` فعال است.
 - AutoMapper: پروفایل‌ها در `*.Application/Mappings/*MappingProfile.cs` ثبت شده‌اند.
