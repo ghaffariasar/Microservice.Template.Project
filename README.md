@@ -62,78 +62,22 @@ docker compose up -d --build
 - WebUI: http://localhost:5100 (نمونه کلاینت)
 
 
-<div dir="ltr" align="right">
+<div dir="rtl" align="right">
 
   
 ### نکات مهم پیاده‌سازی
 
+- Polly: در `ApiGateway` و `WebUI` روی `HttpClient` با Retry/CircuitBreaker ثبت شده است.
+- YARP: در `ApiGateway/Program.cs` با `AddReverseProxy().LoadFromConfig(...).AddTransforms(...)` و `app.MapReverseProxy()` فعال است.
+- AutoMapper: پروفایل‌ها در `*.Application/Mappings/*MappingProfile.cs` ثبت شده‌اند.
+- Result Pattern: در `Shared/Common/Result.cs` تعریف و در Handlerها استفاده می‌شود.
+- Cache & Lock: اکستنشن `AddDistributedCacheAndLock` در `Shared/Extensions/CacheServiceExtensions.cs` با قابلیت سوییچ بین Redis/Memory/SQLServer.
+- Idempotency: سرویس `IIdempotencyService` با `IDistributedCache` پیاده‌سازی شده است؛ هدر `Idempotency-Key` پذیرفته می‌شود.
+- Serilog: در تمام `Program.cs`ها با `UseSerilog()` و `WriteTo.Console()` پیکربندی شده است.
+- CQRS: فرمان‌ها/کوئری‌ها با MediatR در لایه Application هر سرویس قرار دارند.
+- Distributed Lock: پیاده‌سازی Redis-based در `Shared/Services/DistributedLockService.cs`، در سناریوهای رزرو/تأیید موجودی استفاده می‌شود.
 
-- **Polly**  
-  استفاده‌شده روی `HttpClient` در پروژه‌های `ApiGateway` و `WebUI` همراه با الگوهای `Retry` و `CircuitBreaker`.
 
-- **YARP**  
-  تنظیمات در فایل:
-  ```csharp
-  ApiGateway/Program.cs
-  ```
-  شامل:
-  ```csharp
-  AddReverseProxy().LoadFromConfig(...).AddTransforms(...)
-  app.MapReverseProxy();
-  ```
-
-- **AutoMapper**  
-  همه پروفایل‌ها در مسیر زیر قرار دارند:
-  ```text
-  *.Application/Mappings/*MappingProfile.cs
-  ```
-
-- **Result Pattern**  
-  تعریف شده در:
-  ```text
-  Shared/Common/Result.cs
-  ```
-  و در Handlerها استفاده می‌شود.
-
-- **Cache & Lock**  
-  اکستنشن:
-  ```csharp
-  AddDistributedCacheAndLock
-  ```
-  در مسیر:
-  ```text
-  Shared/Extensions/CacheServiceExtensions.cs
-  ```
-  با قابلیت سوییچ بین Redis / Memory / SQLServer.
-
-- **Idempotency**  
-  سرویس:
-  ```csharp
-  IIdempotencyService
-  ```
-  پیاده‌سازی‌شده با `IDistributedCache`  
-  و پشتیبانی از هدر:
-  ```http
-  Idempotency-Key
-  ```
-
-- **Serilog**  
-  در همه فایل‌های `Program.cs` با:
-  ```csharp
-  UseSerilog()
-  WriteTo.Console()
-  ```
-  پیکربندی شده است.
-
-- **CQRS**  
-  فرمان‌ها و کوئری‌ها با **MediatR** در لایه‌ی Application هر سرویس قرار دارند.
-
-- **Distributed Lock**  
-  پیاده‌سازی مبتنی بر Redis در:
-  ```text
-  Shared/Services/DistributedLockService.cs
-  ```
-  و مورد استفاده در سناریوهای رزرو و تأیید موجودی.
 
 
 
