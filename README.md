@@ -67,25 +67,50 @@ docker compose up -d --build
   
 ### نکات مهم پیاده‌سازی
 
-- Polly:
+- <b>Polly</b>:
 <div align="right">
-  در `ApiGateway` و `WebUI` روی `HttpClient` با Retry/CircuitBreaker ثبت شده است.
+در `ApiGateway` و `WebUI` روی `HttpClient` با Retry/CircuitBreaker ثبت شده است.
 </div>
 
-- YARP:
+- <b>YARP</b>:
 <div align="right">
- در `ApiGateway/Program.cs` با `AddReverseProxy().LoadFromConfig(...).AddTransforms(...)` و `app.MapReverseProxy()` فعال است.
+در `ApiGateway/Program.cs` با `AddReverseProxy().LoadFromConfig(...).AddTransforms(...)` و `app.MapReverseProxy()` فعال است.
 </div>
 
-- AutoMapper: پروفایل‌ها در `*.Application/Mappings/*MappingProfile.cs` ثبت شده‌اند.
-- Result Pattern: در `Shared/Common/Result.cs` تعریف و در Handlerها استفاده می‌شود.
-- Cache & Lock: اکستنشن `AddDistributedCacheAndLock` در `Shared/Extensions/CacheServiceExtensions.cs` با قابلیت سوییچ بین Redis/Memory/SQLServer.
-- Idempotency: سرویس `IIdempotencyService` با `IDistributedCache` پیاده‌سازی شده است؛ هدر `Idempotency-Key` پذیرفته می‌شود.
-- Serilog: در تمام `Program.cs`ها با `UseSerilog()` و `WriteTo.Console()` پیکربندی شده است.
-- CQRS: فرمان‌ها/کوئری‌ها با MediatR در لایه Application هر سرویس قرار دارند.
-- Distributed Lock: پیاده‌سازی Redis-based در `Shared/Services/DistributedLockService.cs`، در سناریوهای رزرو/تأیید موجودی استفاده می‌شود.
+- <b>AutoMapper</b>:
+<div align="right">
+پروفایل‌ها در `*.Application/Mappings/*MappingProfile.cs` ثبت شده‌اند.
+</div>
 
+- <b>Result Pattern</b>:
+<div align="right">
+در `Shared/Common/Result.cs` تعریف و در Handlerها استفاده می‌شود.
+</div>
 
+- <b>Cache & Lock</b>:
+<div align="right">
+اکستنشن `AddDistributedCacheAndLock` در `Shared/Extensions/CacheServiceExtensions.cs` با قابلیت سوییچ بین Redis/Memory/SQLServer.
+</div>
+
+- <b>Idempotency</b>:
+<div align="right">
+سرویس `IIdempotencyService` با `IDistributedCache` پیاده‌سازی شده است؛ هدر `Idempotency-Key` پذیرفته می‌شود.
+</div>
+
+- <b>Serilog</b>:
+<div align="right">
+در تمام `Program.cs`ها با `UseSerilog()` و `WriteTo.Console()` پیکربندی شده است.
+</div>
+
+- <b>CQRS</b>
+<div align="right">
+فرمان‌ها/کوئری‌ها با MediatR در لایه Application هر سرویس قرار دارند.
+</div>
+
+- <b>Distributed Lock</b>:
+<div align="right">
+پیاده‌سازی Redis-based در `Shared/Services/DistributedLockService.cs`، در سناریوهای رزرو/تأیید موجودی استفاده می‌شود.
+</div>
 
 
 
