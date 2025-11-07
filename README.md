@@ -5,12 +5,9 @@
 این مخزن یک الگوی کامل برای ساخت سیستم‌های میکروسرویس بر پایه .NET 9 است که با معماری تمیز (Clean Architecture) و الگوهای مدرن پیاده‌سازی شده است. مهم‌ترین تکنولوژی‌ها و ابزارهای استفاده‌شده:
 </div>
 
-- <b>Polly</b>: 
-تاب‌آوری و سیاست‌های Retry/Circuit Breaker برای HttpClient
-- <b>YARP</b>: 
-پیاده‌سازی API Gateway با Reverse Proxy و Transformها
-- <b>AutoMapper</b>: 
-نگاشت موجودیت‌ها به DTO و بالعکس
+- <b>Polly</b>: تاب‌آوری و سیاست‌های Retry/Circuit Breaker برای HttpClient
+- <b>YARP</b>: پیاده‌سازی API Gateway با Reverse Proxy و Transformها
+- <b>AutoMapper</b>: نگاشت موجودیت‌ها به DTO و بالعکس
 - <b>Result Pattern</b>: الگوی نتیجه برای مدیریت موفق/ناموفق بودن عملیات
 - <b>Redis Cache</b>: کش توزیع‌شده (قابل سوییچ به Memory/SQL Server)
 - <b>Idempotency Key</b>: جلوگیری از اجرای تکراری عملیات حساس
@@ -70,8 +67,10 @@ docker compose up -d --build
   
 ### نکات مهم پیاده‌سازی
 
-- Polly: در `ApiGateway` و `WebUI` روی `HttpClient` با Retry/CircuitBreaker ثبت شده است.
-- YARP: در `ApiGateway/Program.cs` با `AddReverseProxy().LoadFromConfig(...).AddTransforms(...)` و `app.MapReverseProxy()` فعال است.
+- Polly:
+-  در `ApiGateway` و `WebUI` روی `HttpClient` با Retry/CircuitBreaker ثبت شده است.
+- YARP:
+-  در `ApiGateway/Program.cs` با `AddReverseProxy().LoadFromConfig(...).AddTransforms(...)` و `app.MapReverseProxy()` فعال است.
 - AutoMapper: پروفایل‌ها در `*.Application/Mappings/*MappingProfile.cs` ثبت شده‌اند.
 - Result Pattern: در `Shared/Common/Result.cs` تعریف و در Handlerها استفاده می‌شود.
 - Cache & Lock: اکستنشن `AddDistributedCacheAndLock` در `Shared/Extensions/CacheServiceExtensions.cs` با قابلیت سوییچ بین Redis/Memory/SQLServer.
