@@ -68,7 +68,7 @@ docker compose up -d --build
 ### نکات مهم پیاده‌سازی
 
 <div align="right" dir="rtl">
-- <b>Polly</b>:
+ <b>Polly</b>:
 
 در `ApiGateway` و `WebUI` روی `HttpClient` با Retry/CircuitBreaker ثبت شده است.
 </div>
