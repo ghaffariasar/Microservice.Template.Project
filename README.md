@@ -78,11 +78,13 @@ docker compose up -d --build
 در `ApiGateway/Program.cs` با `AddReverseProxy().LoadFromConfig(...).AddTransforms(...)` و `app.MapReverseProxy()` فعال است.
 </div>
 
+
 <div align="right" dir="rtl">
 - <b>AutoMapper</b>:
   
 پروفایل‌ها در `*.Application/Mappings/*MappingProfile.cs` ثبت شده‌اند.
 </div>
+
 
 <div align="right" dir="rtl">
 - <b>Result Pattern</b>:
@@ -96,6 +98,7 @@ docker compose up -d --build
 اکستنشن `AddDistributedCacheAndLock` در `Shared/Extensions/CacheServiceExtensions.cs` با قابلیت سوییچ بین Redis/Memory/SQLServer.
 </div>
 
+
 <div align="right" dir="rtl">
 - <b>Idempotency</b>:
   
@@ -104,13 +107,17 @@ docker compose up -d --build
 
 <div align="right" dir="rtl">
 - <b>Serilog</b>:
+  
 در تمام `Program.cs`ها با `UseSerilog()` و `WriteTo.Console()` پیکربندی شده است.
 </div>
 
+
 <div align="right" dir="rtl">
 - <b>CQRS</b>
+  
 فرمان‌ها/کوئری‌ها با MediatR در لایه Application هر سرویس قرار دارند.
 </div>
+
 <div align="right" dir="rtl">
 - <b>Distributed Lock</b>:
 
