@@ -67,7 +67,7 @@ docker compose up -d --build
   
 ### نکات مهم پیاده‌سازی
 
-
+<p dir="rtl" align="right">
 - <b>Polly</b>: در `ApiGateway` و `WebUI` روی `HttpClient` با Retry/CircuitBreaker ثبت شده است.
 - <b>YARP</b>: در `ApiGateway/Program.cs` با `AddReverseProxy().LoadFromConfig(...).AddTransforms(...)` و `app.MapReverseProxy()` فعال است.
 - <b>AutoMapper</b>: پروفایل‌ها در `*.Application/Mappings/*MappingProfile.cs` ثبت شده‌اند.
@@ -77,7 +77,7 @@ docker compose up -d --build
 - <b>Serilog</b>: در تمام `Program.cs`ها با `UseSerilog()` و `WriteTo.Console()` پیکربندی شده است.
 - <b>CQRS</b>: فرمان‌ها/کوئری‌ها با MediatR در لایه Application هر سرویس قرار دارند.
 - <b>Distributed Lock</b>: پیاده‌سازی Redis-based در `Shared/Services/DistributedLockService.cs`، در سناریوهای رزرو/تأیید موجودی استفاده می‌شود.
-
+</p>
 
 
 ### توسعه محلی
