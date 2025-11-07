@@ -79,6 +79,7 @@ docker compose up -d --build
 - <b>Distributed Lock</b>: پیاده‌سازی Redis-based در `Shared/Services/DistributedLockService.cs`، در سناریوهای رزرو/تأیید موجودی استفاده می‌شود.
 
 
+
 ### توسعه محلی
 
 - اجرای Solution از طریق Visual Studio/Rider و انتخاب استارت هم‌زمان پروژه‌ها (Gateway, Services, WebUI)
