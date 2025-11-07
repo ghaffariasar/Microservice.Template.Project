@@ -5,9 +5,12 @@
 این مخزن یک الگوی کامل برای ساخت سیستم‌های میکروسرویس بر پایه .NET 9 است که با معماری تمیز (Clean Architecture) و الگوهای مدرن پیاده‌سازی شده است. مهم‌ترین تکنولوژی‌ها و ابزارهای استفاده‌شده:
 </div>
 
-- <b>Polly</b>: تاب‌آوری و سیاست‌های Retry/Circuit Breaker برای HttpClient
-- <b>YARP</b>: پیاده‌سازی API Gateway با Reverse Proxy و Transformها
-- <b>AutoMapper</b>: نگاشت موجودیت‌ها به DTO و بالعکس
+- <b>Polly</b>: 
+تاب‌آوری و سیاست‌های Retry/Circuit Breaker برای HttpClient
+- <b>YARP</b>: 
+پیاده‌سازی API Gateway با Reverse Proxy و Transformها
+- <b>AutoMapper</b>: 
+نگاشت موجودیت‌ها به DTO و بالعکس
 - <b>Result Pattern</b>: الگوی نتیجه برای مدیریت موفق/ناموفق بودن عملیات
 - <b>Redis Cache</b>: کش توزیع‌شده (قابل سوییچ به Memory/SQL Server)
 - <b>Idempotency Key</b>: جلوگیری از اجرای تکراری عملیات حساس
