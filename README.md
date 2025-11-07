@@ -71,8 +71,12 @@ docker compose up -d --build
 <div align="right">
   در `ApiGateway` و `WebUI` روی `HttpClient` با Retry/CircuitBreaker ثبت شده است.
 </div>
+
 - YARP:
--  در `ApiGateway/Program.cs` با `AddReverseProxy().LoadFromConfig(...).AddTransforms(...)` و `app.MapReverseProxy()` فعال است.
+<div align="right">
+ در `ApiGateway/Program.cs` با `AddReverseProxy().LoadFromConfig(...).AddTransforms(...)` و `app.MapReverseProxy()` فعال است.
+</div>
+
 - AutoMapper: پروفایل‌ها در `*.Application/Mappings/*MappingProfile.cs` ثبت شده‌اند.
 - Result Pattern: در `Shared/Common/Result.cs` تعریف و در Handlerها استفاده می‌شود.
 - Cache & Lock: اکستنشن `AddDistributedCacheAndLock` در `Shared/Extensions/CacheServiceExtensions.cs` با قابلیت سوییچ بین Redis/Memory/SQLServer.
