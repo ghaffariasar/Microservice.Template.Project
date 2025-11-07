@@ -62,7 +62,7 @@ docker compose up -d --build
 - WebUI: http://localhost:5100 (نمونه کلاینت)
 
 
-<div style="direction:rtl;text-align:right">
+<div style="text-align: right;" dir="ltr">
 
   
 ### نکات مهم پیاده‌سازی
