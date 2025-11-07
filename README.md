@@ -80,21 +80,25 @@ docker compose up -d --build
 
 <div align="right" dir="rtl">
 - <b>AutoMapper</b>:
+  
 پروفایل‌ها در `*.Application/Mappings/*MappingProfile.cs` ثبت شده‌اند.
 </div>
 
 <div align="right" dir="rtl">
 - <b>Result Pattern</b>:
+  
 در `Shared/Common/Result.cs` تعریف و در Handlerها استفاده می‌شود.
 </div>
 
 <div align="right" dir="rtl">
 - <b>Cache & Lock</b>:
+  
 اکستنشن `AddDistributedCacheAndLock` در `Shared/Extensions/CacheServiceExtensions.cs` با قابلیت سوییچ بین Redis/Memory/SQLServer.
 </div>
 
 <div align="right" dir="rtl">
 - <b>Idempotency</b>:
+  
 سرویس `IIdempotencyService` با `IDistributedCache` پیاده‌سازی شده است؛ هدر `Idempotency-Key` پذیرفته می‌شود.
 </div>
 
