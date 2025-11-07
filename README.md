@@ -62,13 +62,11 @@ docker compose up -d --build
 - WebUI: http://localhost:5100 (نمونه کلاینت)
 
 
-<div dir="rtl" align="right">
+<div dir="ltr" align="right">
 
   
 ### نکات مهم پیاده‌سازی
 
-
-## ویژگی‌های پروژه
 
 - **Polly**  
   استفاده‌شده روی `HttpClient` در پروژه‌های `ApiGateway` و `WebUI` همراه با الگوهای `Retry` و `CircuitBreaker`.
