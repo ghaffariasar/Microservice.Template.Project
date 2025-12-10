@@ -3,7 +3,6 @@ using InventoryService.Application.Mappings;
 using InventoryService.Infrastructure;
 using Serilog;
 using Shared.Middleware;
-using System.Reflection;
 
 
 
@@ -94,3 +93,5 @@ finally
     Log.CloseAndFlush();
 }
 
+
+public partial class Program{}

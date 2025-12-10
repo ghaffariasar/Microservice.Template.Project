@@ -6,6 +6,8 @@ using Yarp.ReverseProxy.Transforms;
 using HeaderNames = Shared.Common.HeaderNames;
 
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // تنظیمات Logging با Serilog
@@ -107,3 +109,6 @@ finally
     Log.CloseAndFlush();
 }
 
+
+
+public partial class Program { }

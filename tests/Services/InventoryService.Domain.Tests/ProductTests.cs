@@ -32,4 +32,8 @@ public class ProductTests
         // Assert
         Assert.Equal(3, p.ReservedQuantity);
     }
+
+
+
+
 }
