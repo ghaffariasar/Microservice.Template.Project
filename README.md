@@ -1,8 +1,9 @@
 <div dir="rtl" align="right">
 
-<h2>پروژه میکروسرویس (.NET 9)</h2>
+<h2>پروژه میکروسرویس (دات نت 9)</h2>
 
 این مخزن یک الگوی کامل برای ساخت سیستم‌های میکروسرویس بر پایه .NET 9 است که با معماری تمیز (Clean Architecture) و الگوهای مدرن پیاده‌سازی شده است. مهم‌ترین تکنولوژی‌ها و ابزارهای استفاده‌شده:
+</div>
 
 - <b>Polly</b>: تاب‌آوری و سیاست‌های Retry/Circuit Breaker برای HttpClient
 - <b>YARP</b>: پیاده‌سازی API Gateway با Reverse Proxy و Transformها
@@ -15,8 +16,11 @@
 - <b>CQRS</b>: جداسازی فرمان‌ها و کوئری‌ها با MediatR
 - <b>Distributed Lock</b>: قفل توزیع‌شده مبتنی بر Redis برای سناریوهای رقابتی
 
+<div dir="rtl" align="right">
 
 ### ساختار پروژه
+</div>
+
 
 ```
 src/
@@ -28,12 +32,13 @@ src/
 UI/WebUI                          → وب‌اپ ساده MVC برای دمو (HttpClient + Polly)
 ```
 
-
+<div dir="rtl" align="right">
+  
 ### پیکربندی‌های کلیدی
 
 - هدرهای سفارشی در `Shared/Common/HeaderNames.cs`:
-  - `X-Gateway-Api-Key` برای احراز هویت بین Gateway و سرویس‌ها
-  - `Idempotency-Key` برای سناریوهای عدم تکرار
+-  `X-Gateway-Api-Key` برای احراز هویت بین Gateway و سرویس‌ها
+- `Idempotency-Key` برای سناریوهای عدم تکرار
 - انتخاب Provider کش در `appsettings`: کلید `Cache:Provider` یکی از `Redis | Memory | SqlServer`
 - اتصال Redis در `ConnectionStrings:Redis`
 - گزینه‌های Gateway در `GatewayOptions` (کلید `Gateway:ApiKey` اجباری)
@@ -43,6 +48,9 @@ UI/WebUI                          → وب‌اپ ساده MVC برای دمو (
 
 1) پیش‌نیاز: Docker Desktop
 2) در ریشه پروژه:
+
+</div>
+
 
 ```bash
 docker compose up -d --build
@@ -54,17 +62,69 @@ docker compose up -d --build
 - WebUI: http://localhost:5100 (نمونه کلاینت)
 
 
+<div >
+
+  
 ### نکات مهم پیاده‌سازی
 
-- <b>Polly</b>: در `ApiGateway` و `WebUI` روی `HttpClient` با Retry/CircuitBreaker ثبت شده است.
-- <b>YARP</b>: در `ApiGateway/Program.cs` با `AddReverseProxy().LoadFromConfig(...).AddTransforms(...)` و `app.MapReverseProxy()` فعال است.
-- <b>AutoMapper</b>: پروفایل‌ها در `*.Application/Mappings/*MappingProfile.cs` ثبت شده‌اند.
-- <b>Result Pattern</b>: در `Shared/Common/Result.cs` تعریف و در Handlerها استفاده می‌شود.
-- <b>Cache & Lock</b>: اکستنشن `AddDistributedCacheAndLock` در `Shared/Extensions/CacheServiceExtensions.cs` با قابلیت سوییچ بین Redis/Memory/SQLServer.
-- <b>Idempotency</b>: سرویس `IIdempotencyService` با `IDistributedCache` پیاده‌سازی شده است؛ هدر `Idempotency-Key` پذیرفته می‌شود.
-- <b>Serilog</b>: در تمام `Program.cs`ها با `UseSerilog()` و `WriteTo.Console()` پیکربندی شده است.
-- <b>CQRS</b>: فرمان‌ها/کوئری‌ها با MediatR در لایه Application هر سرویس قرار دارند.
-- <b>Distributed Lock</b>: پیاده‌سازی Redis-based در `Shared/Services/DistributedLockService.cs`، در سناریوهای رزرو/تأیید موجودی استفاده می‌شود.
+<div align="right" dir="rtl">
+- <b>Polly</b>:
+
+در `ApiGateway` و `WebUI` روی `HttpClient` با Retry/CircuitBreaker ثبت شده است.
+</div>
+
+<div align="right" dir="rtl">
+- <b>YARP</b>:
+در `ApiGateway/Program.cs` با `AddReverseProxy().LoadFromConfig(...).AddTransforms(...)` و `app.MapReverseProxy()` فعال است.
+</div>
+
+
+<div align="right" dir="rtl">
+- <b>AutoMapper</b>:
+  
+پروفایل‌ها در `*.Application/Mappings/*MappingProfile.cs` ثبت شده‌اند.
+</div>
+
+
+<div align="right" dir="rtl">
+- <b>Result Pattern</b>:
+  
+در `Shared/Common/Result.cs` تعریف و در Handlerها استفاده می‌شود.
+</div>
+
+<div align="right" dir="rtl">
+- <b>Cache & Lock</b>:
+  
+اکستنشن `AddDistributedCacheAndLock` در `Shared/Extensions/CacheServiceExtensions.cs` با قابلیت سوییچ بین Redis/Memory/SQLServer.
+</div>
+
+
+<div align="right" dir="rtl">
+- <b>Idempotency</b>:
+  
+سرویس `IIdempotencyService` با `IDistributedCache` پیاده‌سازی شده است؛ هدر `Idempotency-Key` پذیرفته می‌شود.
+</div>
+
+<div align="right" dir="rtl">
+- <b>Serilog</b>:
+  
+در تمام `Program.cs`ها با `UseSerilog()` و `WriteTo.Console()` پیکربندی شده است.
+</div>
+
+
+<div align="right" dir="rtl">
+- <b>CQRS</b>
+  
+فرمان‌ها/کوئری‌ها با MediatR در لایه Application هر سرویس قرار دارند.
+</div>
+
+<div align="right" dir="rtl">
+- <b>Distributed Lock</b>:
+
+پیاده‌سازی Redis-based در `Shared/Services/DistributedLockService.cs`، در سناریوهای رزرو/تأیید موجودی استفاده می‌شود.
+</div>
+
+
 
 
 ### توسعه محلی
@@ -81,7 +141,9 @@ docker compose up -d --build
 
 <hr/>
 
+
 </div>
+
 
 ## Microservice Template (.NET 9)
 
